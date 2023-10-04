@@ -10,6 +10,8 @@ namespace Frontend.Modules.Finder
     class FileSystemInspector
     {
         // TODO Vad innebär det att _currentDirectory är 'private'? Varför är inte TryGoDown också 'private'?
+        //Answer: 'private' is an access modifier that marks the _currentDirectory property as only visible from inside the class
+        //TryGoDown() is public because it is a method that is meant to be called from an instance of the class to change the value of a private property
         private DirectoryInfo _currentDirectory;
 
         public FileSystemInspector()
