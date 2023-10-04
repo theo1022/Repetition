@@ -17,6 +17,7 @@ namespace Frontend
         }
 
         //TODO Vad är 'this' just i denna koden?
+        // Answer: 'this' is the current instance of a MenuManager object from which the SwitchToMainMenu method is called
         public void SwitchToMainMenu()
         {
             SwitchToControl(new MainMenuControl(this));
