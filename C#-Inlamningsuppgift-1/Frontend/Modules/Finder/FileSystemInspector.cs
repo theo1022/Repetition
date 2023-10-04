@@ -41,6 +41,7 @@ namespace Frontend.Modules.Finder
             FileInfo fileToView = null;
 
             // TODO Finns det någon nackdel med att använda for-loopar istället för foreach-loopar?
+            //Answer: An incorrectly written for loop might turn into an endless loop or the index might fall out of range, casuing a crash
             // Skriv om denna foreach-loopen nedan till en for-loop istället.
             // Använd '_currentDirectory.GetFiles' istället för '_currentDirectory.EnumerateFiles'
             foreach (var file in _currentDirectory.EnumerateFiles())
