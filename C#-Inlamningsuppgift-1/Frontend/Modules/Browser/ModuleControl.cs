@@ -44,6 +44,9 @@ namespace Frontend.Modules.Browser
             string pageContent;
 
             // TODO Vad gör denna try/catch-satsen och varför är det lägligt att skriva den här och inte innuti FetchSearch() metoden?
+            //Answer: It tries to await a response from the FetchSearch() method
+            //If such a respons is not returned in an appropriate manner it returns the messagage from the exception object
+            //The reason to have it here is that it allows for code that is easier to read, as well as allowing the await statement to catch the exception from a response
             try
             {
                 pageContent = await _webFetcher.FetchSearch(SearchBar.Text);
