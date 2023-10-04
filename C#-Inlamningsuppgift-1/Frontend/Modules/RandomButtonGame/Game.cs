@@ -24,6 +24,7 @@ namespace Frontend.Modules.RandomButtonGame
         }
 
         //TODO Utifrån hur metoden 'PrepNewGame' nedan är skriven. Vilken knapp kommer att hamna på _buttons[10]?
+        //Answer: _buttons[10] is never reached, as the array has 10 positions, starting from i = 0 and ending at i = 9
         public void PrepNewGame(Control container)
         {
             Random random = new Random(236763541);
