@@ -27,7 +27,7 @@ namespace Frontend.Modules.RandomButtonGame
         //Answer: _buttons[10] is never reached, as the array has 10 positions, starting from i = 0 and ending at i = 9
         public void PrepNewGame(Control container)
         {
-            Random random = new Random(236763541);
+            Random random = new Random();//Bugfix RandomButtonGame module: the Random object was initialized with a seed '236763541'
             for (int i = 0; i < _buttons.Length; i++)
             {
                 RandomButton newButton = new RandomButton(i + 1);
