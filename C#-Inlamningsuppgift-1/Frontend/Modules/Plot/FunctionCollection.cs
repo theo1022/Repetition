@@ -21,8 +21,8 @@ namespace Frontend.Modules.Plot
                 { "sin(x)", x => Math.Sin(x) },
                 { "2x + 1", x => 2*x + 1 },
                 { "x mod 0.5", x => x % 0.5 },
-                { "x\u00b2", x => Math.Min(x, 2) },
-                { "min(x, 2)", x => Math.Pow(x, 2) }
+                { "x\u00b2", x => Math.Pow(x, 2) },//Bugfix Plot module: Previously Math.Min
+                { "min(x, 2)", x => Math.Min(x, 2) }//Bugfix Plot Module: Previously Math.Pow
             };
         }
 

@@ -8,6 +8,7 @@ namespace Frontend.Modules.Plot
 {
     // BUG Funktionen "x^2" (x upphöjt till två) ska se ut som en uppvänd parabol (https://www.wolframalpha.com/input/?i=x%5E2).
     // Kolla om det inte är någon miss som skett.
+    //Bugfix Plot module: the FunctionCollection class had swaped the Math methods Min and Pow
     public partial class ModuleControl : UserControl
     {
         private readonly FunctionCollection _funcCollection;
