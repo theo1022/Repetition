@@ -13,7 +13,8 @@ namespace Frontend.Modules.Finder
 {
     // BUG Programmet kraschar med ett undantag om man forstätter att gå upp en folder
     // Normalt sett ska inget hända om man fortsätter gå upp när man redan står i root foldern (t.ex. "C:\")
-    // 
+    // Bugfix Finder module: Method MoveUpIcon_Click() calls _inspectorTryGoUp() which didn't check if the Parent property was null
+    // Added an if statement and also changed the TryGoUp() method to return a bool to controll if UpdateVisuals() is called
     public partial class ModuleControl : UserControl
     {
         private readonly FileSystemInspector _inspector;
@@ -30,8 +31,10 @@ namespace Frontend.Modules.Finder
 
         private void MoveUpIcon_Click(object sender, EventArgs e)
         {
-            _inspector.TryGoUp();
-            UpdateVisuals();
+            if (_inspector.TryGoUp())
+            {
+                UpdateVisuals();
+            }
         }
 
         private void MoveDownIcon_Click(object sender, EventArgs e)
