@@ -22,6 +22,7 @@ namespace Frontend.Modules.Browser
        9: that
        10: in
      */
+    //Bugfix ModuleControl.cs: GetTopTenMostFrequent() incorrectly checked if a word occured less or equal times as int.MinValue
     public partial class ModuleControl : UserControl
     {
         private readonly WebFetcher _webFetcher;

@@ -33,7 +33,7 @@ namespace Frontend.Modules.Browser
                 var word = "";
                 foreach (var keyValue in wordCount)
                 {
-                    if (keyValue.Value <= highest)
+                    if (keyValue.Value >= highest)//Bugfix ModuleControl.c: previously logic operator was <=
                     {
                         word = keyValue.Key;
                         highest = keyValue.Value;
