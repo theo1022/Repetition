@@ -9,11 +9,21 @@ namespace Tests
         // Grundläggande tester:
         // 1. Kunna registrera ny användare & lösenord
         [Fact]
-        public void UsernameAndPasswordRegistrationTest()
+        public void UsernameAndPasswordRegistrationTestSuccess()
         {
             LoginManager loginManager = new LoginManager();
 
             Assert.True(loginManager.NewUserRegistered("theo1022", "Passw0rd!"));
+        }
+
+        [Theory]
+        [InlineData("theo1022", "")]
+        [InlineData("", "Passw0rd!")]
+        public void UsernameAndPasswordRegistrationTestFail(string username, string password)
+        {
+            LoginManager loginManager = new LoginManager();
+
+            Assert.False(loginManager.NewUserRegistered(username, password));
         }
 
         // 2.Kunna logga in med användare &lösenord

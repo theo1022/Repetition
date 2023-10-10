@@ -6,7 +6,11 @@ namespace Core
     {
         public bool NewUserRegistered(string username, string password)
         {
-            return false;
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }
