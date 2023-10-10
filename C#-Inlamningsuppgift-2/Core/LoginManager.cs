@@ -12,5 +12,10 @@ namespace Core
             }
             return true;
         }
+
+        public bool TryLogin(string username, string password)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

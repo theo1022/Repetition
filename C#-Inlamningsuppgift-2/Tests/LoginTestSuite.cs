@@ -27,6 +27,24 @@ namespace Tests
         }
 
         // 2.Kunna logga in med användare &lösenord
+        [Fact]
+        public void UserLoginTestSuccess()
+        {
+            LoginManager loginManager = new LoginManager();
+
+            Assert.True(loginManager.TryLogin("theo1022", "Passw0rd!"));
+        }
+
+        [Theory]
+        [InlineData("theo1022", "")]
+        [InlineData("", "Passw0rd!")]
+        public void UserLoginTestFail(string username, string password)
+        {
+            LoginManager loginManager = new LoginManager();
+
+            Assert.False(loginManager.TryLogin(username, password));
+        }
+
         // 3.Inte kunna registrera samma användare två gånger om
         // 4.Bara kunna registrera användarnamn med engelska bokstäver(a-z, A - Z) siffor(0 - 9) och specialtecken(-_) som är max 16 karaktärer långa
         // 5.Bara kunna registrera lösenord med bokstäver(a - z, A - Z) siffor(0 - 9) och specialtecken (!”#¤%&/()=?-_*’) som är max 16 karaktärer långa
