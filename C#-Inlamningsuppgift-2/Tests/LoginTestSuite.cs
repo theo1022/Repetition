@@ -12,6 +12,8 @@ namespace Tests
         public void UsernameAndPasswordRegistrationTest()
         {
             LoginManager loginManager = new LoginManager();
+
+            Assert.True(loginManager.NewUserRegistered("theo1022", "Passw0rd!"));
         }
 
         // 2.Kunna logga in med användare &lösenord
