@@ -6,6 +6,9 @@ namespace Tests
 {
     public class LoginTestSuite
     {
+        private const string correctUsername = "theo1022";
+        private const string correctPassword = "Passw0rd!";
+
         // Grundläggande tester:
         // 1. Kunna registrera ny användare & lösenord
         [Fact]
@@ -13,12 +16,12 @@ namespace Tests
         {
             LoginManager loginManager = new LoginManager();
 
-            Assert.True(loginManager.NewUserRegistered("theo1022", "Passw0rd!"));
+            Assert.True(loginManager.NewUserRegistered(correctUsername, correctPassword));
         }
 
         [Theory]
-        [InlineData("theo1022", "")]
-        [InlineData("", "Passw0rd!")]
+        [InlineData(correctUsername, "")]
+        [InlineData("", correctPassword)]
         public void UsernameAndPasswordRegistrationTestFail(string username, string password)
         {
             LoginManager loginManager = new LoginManager();
@@ -26,26 +29,23 @@ namespace Tests
             Assert.False(loginManager.NewUserRegistered(username, password));
         }
 
-        // 2.Kunna logga in med användare &lösenord
+        // 2.Kunna logga in med användare & lösenord
         [Fact]
         public void UserLoginTestSuccess()
         {
             LoginManager loginManager = new LoginManager();
-            var username = "theo2022";
-            var password = "Passw0rd!";
-            loginManager.NewUserRegistered(username, password);
+            loginManager.NewUserRegistered(correctUsername, correctPassword);
 
-            Assert.True(loginManager.TryLogin(username, password));
+            Assert.True(loginManager.TryLogin(correctUsername, correctPassword));
         }
 
         [Fact]
         public void UserLoginTestFail()
         {
             LoginManager loginManager = new LoginManager();
-            var username = "theo1022";
-            loginManager.NewUserRegistered(username, "Passw0rd!");
+            loginManager.NewUserRegistered(correctUsername, correctPassword);
 
-            Assert.False(loginManager.TryLogin(username, "WrongPassword"));
+            Assert.False(loginManager.TryLogin(correctUsername, "WrongPassword"));
         }
 
         // 3.Inte kunna registrera samma användare två gånger om
