@@ -31,18 +31,21 @@ namespace Tests
         public void UserLoginTestSuccess()
         {
             LoginManager loginManager = new LoginManager();
+            var username = "theo2022";
+            var password = "Passw0rd!";
+            loginManager.NewUserRegistered(username, password);
 
-            Assert.True(loginManager.TryLogin("theo1022", "Passw0rd!"));
+            Assert.True(loginManager.TryLogin(username, password));
         }
 
-        [Theory]
-        [InlineData("theo1022", "")]
-        [InlineData("", "Passw0rd!")]
-        public void UserLoginTestFail(string username, string password)
+        [Fact]
+        public void UserLoginTestFail()
         {
             LoginManager loginManager = new LoginManager();
+            var username = "theo1022";
+            loginManager.NewUserRegistered(username, "Passw0rd!");
 
-            Assert.False(loginManager.TryLogin(username, password));
+            Assert.False(loginManager.TryLogin(username, "WrongPassword"));
         }
 
         // 3.Inte kunna registrera samma användare två gånger om
